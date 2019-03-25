@@ -1,29 +1,23 @@
 <?php
-$target_dir = "uploads/";
-// $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-$uploadOk = 1;
+
+// uses composer to sync packages
+
+include 'vendor/autoload.php';
+$parser = new \Smalot\PdfParser\Parser();
+
+$targetDir = 'uploads/';
 
 
+ if (!empty($_FILES)) {
+    $targetFile = $targetDir.time().'-'. $_FILES['file']['name'];
+    move_uploaded_file($_FILES['file']['tmp_name'],$targetFile);
+ }
 
-$totalFiles = count($_FILES['fileToUpload']['name']);
+ // loop through all files in uploads and parse them as text
+ $pdf  = $parser->parseFile( "uploads/1553487333-test_pdf1.pdf" );
+ $text = $pdf->getText();
+ file_put_contents("uploads/pdftext.txt", $text);
 
-for ( $i = 0;  $i < $totalFiles; $i++){
-    $tmpFilePath = $_FILES['fileToUpload']['tmp_name'][$i];
-
-    // if the file exists.
-    if($tmpFilePath != "")
-    {
-        $newPath = "./uploads/" . $_FILES['fileToUpload']['name'][$i];
-        if(move_uploaded_file($tmpFilePath, $newPath)){
-
-            // format file here.
-        }
-    }
-
-}
-
-
+   
+    
 ?>
-
-
-
