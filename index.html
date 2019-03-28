@@ -5,18 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>WordCloud Generator</title>
-    <!-- dropzone.js - https://www.dropzonejs.com/ -->
+    <!-- this uses dropzone.js - https://www.dropzonejs.com/ -->
     <link href="./stylesheets/dropzone.css" rel="stylesheet">
     <link href="./stylesheets/style.css" rel="stylesheet">
     <script src="./js/dropzone.js"></script>
 </head>
 <body>
 
-    <!-- would need to implement sessions to actually deploy this. -->
+<!-- would need to implement sessions to actually deploy this. -->
 <h3>Drop files to generate as word cloud</h3>
 <!-- possible TODO: no way to delete uploaded files -->
 <form action="upload.php" class="dropzone">
+    
 </form>
+
+<input type="submit" action="upload.php" name="Generate"></input>
 <!-- can add generate button here, which would run a js file/function which formats, counts words and generates word cloud. -->
 </body>
 </html>
