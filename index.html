@@ -8,18 +8,21 @@
     <!-- this uses dropzone.js - https://www.dropzonejs.com/ -->
     <link href="./stylesheets/dropzone.css" rel="stylesheet">
     <link href="./stylesheets/style.css" rel="stylesheet">
+    <script src="./js/jquery-3.3.1.js"></script>
     <script src="./js/dropzone.js"></script>
+    <script src="./js/wordcloudgenerator.js"></script>
+    <script src="./js/wordcloud2.js"></script>
 </head>
-<body>
 
+
+<body>
 <!-- would need to implement sessions to actually deploy this. -->
 <h3>Drop files to generate as word cloud</h3>
 <!-- possible TODO: no way to delete uploaded files -->
 <form action="upload.php" class="dropzone">
     
 </form>
-
-<input type="submit" action="upload.php" name="Generate"></input>
+<input id="clickMe" type="button" value="Generate WordCloud" src="./js/wordcloudgenerator" onclick="generate();" />
 <!-- can add generate button here, which would run a js file/function which formats, counts words and generates word cloud. -->
 </body>
 </html>
