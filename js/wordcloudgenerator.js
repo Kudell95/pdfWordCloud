@@ -1,25 +1,6 @@
-function init(){
-  
-
-}
-
-
-
 
 function generate(){
-//  var words;      
-  // $.getJSON("./uploads/pdftext.json", function(json) {
-  //   // console.log(words); // this will show the info it in firebug console
 
-  //   words = json;
-  //   console.log(words);
-
-    
-
-    // rank the words here.
-
-
-  // });
 
 
   //FIXME: this sorta works but doesn't seem to update when new files are added.
@@ -43,10 +24,9 @@ function loadJSON(callback) {
 
   var xobj = new XMLHttpRequest();
       xobj.overrideMimeType("uploads/pdftext.json");
-  xobj.open('GET', 'my_data.json', true); // Replace 'my_data' with the path to your file
+  xobj.open('GET', 'my_data.json', true);
   xobj.onreadystatechange = function () {
         if (xobj.readyState == 4 && xobj.status == "200") {
-          // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
           callback(xobj.responseText);
         }
   };
