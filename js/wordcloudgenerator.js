@@ -24,7 +24,7 @@ function loadJSON(callback) {
 
   var xobj = new XMLHttpRequest();
       xobj.overrideMimeType("uploads/pdftext.json");
-  xobj.open('GET', 'my_data.json', true);
+  xobj.open('GET', 'uploads/pdftext.json', true);
   xobj.onreadystatechange = function () {
         if (xobj.readyState == 4 && xobj.status == "200") {
           callback(xobj.responseText);
