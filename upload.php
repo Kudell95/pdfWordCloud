@@ -34,7 +34,14 @@ $targetDir = 'uploads/';
 
 //TODO: process the text and 
 
-file_put_contents("uploads/pdftext.json", json_encode($words), FILE_APPEND);  //saves words array to a json file
+
+if(file_exists("uploads/pdftext.json")){
+   $old_json_contents = json_decode(file_get_contents("uploads/pdftext.json"));
+   print $old_json_contents;
+   $words = array_merge($words, $old_json_contents);
+} //as far as i can tell this works, but i got some strange results when i ran wordcloudgenerator.js
+$json_result = json_encode($words);
+file_put_contents("uploads/pdftext.json", $json_result);  //saves words array to a json file
 
 
  
