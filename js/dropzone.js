@@ -149,7 +149,11 @@
       dictRemoveFileConfirmation: null,
       dictMaxFilesExceeded: "You can not upload any more files.",
       accept: function(file, done) {
+        if (file.type == "application/pdf" || file.type == "application/vnd.openxmlformats-officedocument.wordprocessingml.document" || file.type == "application/msword") {
         return done();
+        }else{
+          done("Error! Files of this type are not accepted");
+        }
       },
       init: function() {
         return noop;

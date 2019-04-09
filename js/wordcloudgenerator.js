@@ -23,11 +23,11 @@ function generate(){
 function loadJSON(callback) {   
 
   var xobj = new XMLHttpRequest();
-      xobj.overrideMimeType("uploads/pdftext.json");
+  xobj.overrideMimeType("uploads/pdftext.json");
   xobj.open('GET', 'uploads/pdftext.json', true);
   xobj.onreadystatechange = function () {
         if (xobj.readyState == 4 && xobj.status == "200") {
-          callback(xobj.responseText);
+            callback(xobj.responseText);
         }
   };
   xobj.send(null);  
