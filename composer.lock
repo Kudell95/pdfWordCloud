@@ -4,8 +4,43 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3ffbe28fb745b145fa2fcd19500ebf5e",
+    "content-hash": "2997758d9b1771205e1778a330fa4239",
     "packages": [
+        {
+            "name": "lukemadhanga/php-document-parser",
+            "version": "0.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LukeMadhanga/PHPDocumentParser.git",
+                "reference": "97233b3cb737e09342c69e4607b4924f0df38142"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/LukeMadhanga/PHPDocumentParser/zipball/97233b3cb737e09342c69e4607b4924f0df38142",
+                "reference": "97233b3cb737e09342c69e4607b4924f0df38142",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "LukeMadhanga\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Luke Madhanga",
+                    "email": "luke@madhan.ga",
+                    "homepage": "http://madhan.ga",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A PHP parser for getting the text from a .doc, .docx, .rtf or .txt file",
+            "time": "2019-03-21T09:30:26+00:00"
+        },
         {
             "name": "smalot/pdfparser",
             "version": "v0.14.0",

@@ -4,7 +4,8 @@ header('Content-Type: application/json');
 
 include 'vendor/autoload.php';
 $dir = new RecursiveDirectoryIterator("./uploads/");
-$parser = new \Smalot\PdfParser\Parser();
+$parser = new \Smalot\PdfParser\Parser(); //PDF Parser
+$parser_docx = new LukeMadhanga\DocumentParser(); //DOCX Parser
 $words = array();
 
 
@@ -21,13 +22,22 @@ $targetDir = 'uploads/';
       
     
       $tmp = explode(".", $fileinfo->getFilename());                 //seperate the filetype by seperating filename by "."
-      $extension = end($tmp);                                        //assign the extension
+      $extension = strtolower(end($tmp));                            //assign the extension and convert to lowercase
       if($extension == "pdf"){                                       //if it's a pdf (will need to add docx proccessing as well)
          $pdf  = $parser->parseFile( $targetDir.$filename);          //parse the pdf
          $text = $pdf->getText();                                    //get all text in the pdf
          $temp_arr = explode(" ", $text);                            //seperate every word by a space delimiter
          $words =  array_merge($words, $temp_arr);                   // store every word in the array words
-      }
+      } else if ($extension == "docx") {
+				//Read in contents of the DOCX file
+				$docx = $parser_docx->parseFromFile($targetDir . $filename);
+				
+				//Remove all DOCX tags from input
+				$docx = preg_replace("/(<p\srsidR=\"\d+\"\srsidRDefault=\"\d+\"\srsidP=\"\d+\">|<\/p>|\\n)/", "", $docx);
+				
+				//Break input into individual words
+				$words = explode(" ", $docx);
+			}
 
 
 }

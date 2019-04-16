@@ -1,5 +1,6 @@
 {
      "require": {
-         "smalot/pdfparser": "*"
+         "smalot/pdfparser": "*",
+				 "lukemadhanga/php-document-parser": "*"
     }
 }
