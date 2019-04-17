@@ -55,9 +55,10 @@ if(file_exists("uploads/pdftext.json")){
 } //as far as i can tell this works, but i got some strange results when i ran wordcloudgenerator.js
 
 $words = preg_replace('/\b('.implode('|',$commonWords).')\b/','',$words);
+strtolower($words);
 
 $json_result = json_encode($words);
-$json_result = preg_replace("/(,\"\")/", "", $json_result);
+$json_result = preg_replace("/(,\"\")/", "", $json_result); //this needs work, i'm horrible at regex.
 $json_result = preg_replace("/(\.)/", "", $json_result);
 file_put_contents("uploads/pdftext.json", $json_result);  //saves words array to a json file
 

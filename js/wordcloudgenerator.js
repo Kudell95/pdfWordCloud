@@ -2,44 +2,39 @@
 var count = 0;
 
 function generate(){
+var occurencesArr = new Array();
+var checkedwords = new Array();
 
 //found much better way to load json using jquery
 //found problem where the json file would get cached with some browsers, causing the file to not be updated when the script is run.
   $.getJSON( "uploads/pdftext.json", function( words ) {
-      console.log(words);
+      // console.log(words);
+      var numberofwords = words.length;
+      
+
+      for(var i = 0; i < numberofwords; i++){ //loop through everyword
+        var currentword = words[i];
+        var occurences = 1; //set as one by default
+
+        if(!checkedwords.includes(currentword)){ //if the word hasn't been counted before
+        for(var j = i + 1; j < numberofwords; j++){ //check the rest of the words for occurences
+            if (currentword == words[j]){
+              occurences ++; //add an occurence
+            }
+        }
+
+        checkedwords.push(currentword); //to stop words getting counted more than once
+        occurencesArr.push([currentword,occurences]);
+      }
+      }
+
+      occurencesArr = occurencesArr.sort();
+      occurencesArr = occurencesArr.slice(150, 238);
+      console.log(occurencesArr);
+
+      WordCloud([document.getElementById('wordcloud_canvas'), document.getElementById('wordcloud_container'),], {list: occurencesArr, gridSize: Math.round(16 * $('#wordcloud_canvas').width() / 1024),
+      weightFactor: 10});
 });
 
 
-
-
-//   loadJSON(function(response) {
-//     // Parse JSON string into object
-//       var words = JSON.parse(response);
-//       // console.log(words);
-//       console.table(words.slice(0,1000));
-//       // console.table(words.slice(999,2000));
-//       // console.table(words.slice(1999,3000));
-//    });
-  
-  
-//   //TODO: use the "Words" array to sort through and find most common one's
-
-//   //format the common words in a two dimmensional array, i.e. ["word", "occurence"] so it can be used by wordcloud2.js
-
-// }; 
-
-
-
-
-// function loadJSON(callback) {   
-
-//   var xobj = new XMLHttpRequest();
-//   xobj.overrideMimeType("uploads/pdftext.json");
-//   xobj.open('GET', 'uploads/pdftext.json', true);
-//   xobj.onreadystatechange = function () {
-//         if (xobj.readyState == 4 && xobj.status == "200") {
-//             callback(xobj.responseText);
-//         }
-//   };
-//   xobj.send(null);  
 }
