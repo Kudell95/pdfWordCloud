@@ -130,7 +130,7 @@
       params: {},
       clickable: true,
       ignoreHiddenFiles: true,
-      acceptedFiles: null,
+      acceptedFiles: ".pdf,.docx,.txt",
       acceptedMimeTypes: null,
       autoProcessQueue: true,
       autoQueue: true,
@@ -149,11 +149,7 @@
       dictRemoveFileConfirmation: null,
       dictMaxFilesExceeded: "You can not upload any more files.",
       accept: function(file, done) {
-        if (file.type == "application/pdf" || file.type == "application/vnd.openxmlformats-officedocument.wordprocessingml.document" || file.type == "application/msword" || file.type == "text/plain") {
-        return done();
-        }else{
-          done("Error! Files of this type are not accepted");
-        }
+        return done();       
       },
       init: function() {
         return noop;
