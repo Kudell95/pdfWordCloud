@@ -4,10 +4,12 @@ var count = 0;
 function generate(){
 var occurencesArr = new Array();
 var checkedwords = new Array();
+var wc_gridsize = Math.round(16 * $('#wordcloud_canvas').width() / 1024);
+var wc_weightFactor = 10;
 
 //found much better way to load json using jquery
 //found problem where the json file would get cached with some browsers, causing the file to not be updated when the script is run.
-  $.getJSON( "uploads/pdftext.json", function( words ) {
+  $.getJSON( "uploads/pdftext.json?_=" + new Date().getTime(), function( words ) {
       // console.log(words);
       var numberofwords = words.length;
       
@@ -29,11 +31,11 @@ var checkedwords = new Array();
       }
 
       occurencesArr = occurencesArr.sort();
-      occurencesArr = occurencesArr.slice(150, 238);
+      occurencesArr = occurencesArr.slice(150, 238); //this is just for testing the size of the array.
       console.log(occurencesArr);
 
-      WordCloud([document.getElementById('wordcloud_canvas'), document.getElementById('wordcloud_container'),], {list: occurencesArr, gridSize: Math.round(16 * $('#wordcloud_canvas').width() / 1024),
-      weightFactor: 10});
+      WordCloud([document.getElementById('wordcloud_canvas'), document.getElementById('wordcloud_container'),], {list: occurencesArr, gridSize: wc_gridsize,
+      weightFactor: wc_weightFactor});
 });
 
 
