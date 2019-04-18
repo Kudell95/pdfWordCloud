@@ -31,7 +31,7 @@ var wc_weightFactor = 10;
       }
 
       occurencesArr = occurencesArr.sort();
-      occurencesArr = occurencesArr.slice(150, 238); //this is just for testing the size of the array.
+      // occurencesArr = occurencesArr.slice(150, 238); //this is just for testing the size of the array.
       console.log(occurencesArr);
 
       WordCloud([document.getElementById('wordcloud_canvas'), document.getElementById('wordcloud_container'),], {list: occurencesArr, gridSize: wc_gridsize,
