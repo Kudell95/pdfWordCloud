@@ -5,7 +5,7 @@ header('Content-Type: application/json');
 include 'vendor/autoload.php';
 $dir = new RecursiveDirectoryIterator("./uploads/");
 $parser = new \Smalot\PdfParser\Parser(); //PDF Parser
-$parser_docx = new LukeMadhanga\DocumentParser(); //DOCX Parser
+$parser_docx_txt = new LukeMadhanga\DocumentParser(); //DOCX and TXT Parser
 $words = array();
 
 
@@ -30,13 +30,24 @@ $targetDir = 'uploads/';
          $words =  array_merge($words, $temp_arr);                   // store every word in the array words
       } else if ($extension == "docx") {
 				//Read in contents of the DOCX file
-				$docx = $parser_docx->parseFromFile($targetDir . $filename);
+				$docx = $parser_docx_txt->parseFromFile($targetDir . $filename);
 				
-				//Remove all DOCX tags from input
-				$docx = preg_replace("/(<p\srsidR=\"\d+\"\srsidRDefault=\"\d+\"\srsidP=\"\d+\">|<\/p>|\\n)/", "", $docx);
+				//Remove all formatting tags and new line characters from input
+				$pattern = "/<(\/)?(\w)+(\s)*(\w+=\"\w+\"\s*)*>|\\n/";
+				$docx = preg_replace($pattern, "", $docx);
 				
 				//Break input into individual words
 				$words = explode(" ", $docx);
+			} else if ($extension == "txt") {
+				//Read in contents of TXT file
+				$txt = $parser_docx_txt->parseFromFile($targetDir . $filename);
+				
+				//Remove all control characters
+				$pattern = "/\r\n/";
+				$txt = preg_replace($pattern, "", $txt);
+				
+				//Break input into individual words
+				$words = explode(" ", $txt);
 			}
 
 
