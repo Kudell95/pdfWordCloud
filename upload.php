@@ -45,7 +45,6 @@ $targetDir = 'uploads/';
 
 }
 
-//TODO: process the text and 
 
 
 if(file_exists("uploads/pdftext.json")){ 
