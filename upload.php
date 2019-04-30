@@ -99,11 +99,11 @@ foreach ($dir as $fileinfo) {
 
 
 
-if(file_exists("uploads/pdftext.json")){
-  $old_json_contents = json_decode(file_get_contents("uploads/pdftext.json"));
-  print $old_json_contents;
-  $words = array_merge($words, $old_json_contents);
-} //as far as i can tell this works, but i got some strange results when i ran wordcloudgenerator.js
+// if(file_exists("uploads/pdftext.json")){
+//   $old_json_contents = json_decode(file_get_contents("uploads/pdftext.json"));
+//   print $old_json_contents;
+//   $words = array_merge($words, $old_json_contents);
+// } //as far as i can tell this works, but i got some strange results when i ran wordcloudgenerator.js
 
 
 $json_result = json_encode($words);
