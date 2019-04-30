@@ -1,6 +1,8 @@
 {
      "require": {
          "smalot/pdfparser": "*",
-				 "lukemadhanga/php-document-parser": "*"
+				 "lukemadhanga/php-document-parser": "*",
+				 "nlp-tools/nlp-tools": "1.0.*@dev",
+				 "skyeng/php-lemmatizer": "*"
     }
 }

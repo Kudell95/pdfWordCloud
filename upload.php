@@ -2,10 +2,13 @@
 header('Content-Type: application/json');
 // uses composer to sync packages
 
+use Skyeng\Lemmatizer;
+
 include 'vendor/autoload.php';
 $dir = new RecursiveDirectoryIterator("./uploads/");
 $parser = new \Smalot\PdfParser\Parser(); //PDF Parser
 $parser_docx_txt = new LukeMadhanga\DocumentParser(); //DOCX and TXT Parser
+$lemma = new Lemmatizer();
 $words = array();
 $word_count = array();
 
@@ -89,6 +92,13 @@ foreach ($dir as $fileinfo) {
     }
   }
 	$words = array_values($words);
+	
+	//Lemmatiser
+	$words_temp = array();
+	for ($i = 0; $i < count($words); $i++) {
+    $words_temp[$i] = $lemma->getOnlyLemmas($words[$i]);
+  }
+  $words = array_column($words_temp, 0);
 
 }
 
