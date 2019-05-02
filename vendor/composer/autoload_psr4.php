@@ -6,5 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Skyeng\\' => array($vendorDir . '/skyeng/php-lemmatizer/src'),
     'LukeMadhanga\\' => array($vendorDir . '/lukemadhanga/php-document-parser/src'),
 );

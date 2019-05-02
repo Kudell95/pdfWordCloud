@@ -7,4 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Smalot\\PdfParser\\' => array($vendorDir . '/smalot/pdfparser/src'),
+    'NlpTools\\' => array($vendorDir . '/nlp-tools/nlp-tools/src'),
 );

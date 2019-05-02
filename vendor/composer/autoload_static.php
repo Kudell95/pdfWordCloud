@@ -7,6 +7,10 @@ namespace Composer\Autoload;
 class ComposerStaticInit1125da0eb34c7e3373bd2e1456ea40a9
 {
     public static $prefixLengthsPsr4 = array (
+        'S' => 
+        array (
+            'Skyeng\\' => 7,
+        ),
         'L' => 
         array (
             'LukeMadhanga\\' => 13,
@@ -14,6 +18,10 @@ class ComposerStaticInit1125da0eb34c7e3373bd2e1456ea40a9
     );
 
     public static $prefixDirsPsr4 = array (
+        'Skyeng\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/skyeng/php-lemmatizer/src',
+        ),
         'LukeMadhanga\\' => 
         array (
             0 => __DIR__ . '/..' . '/lukemadhanga/php-document-parser/src',
@@ -26,6 +34,13 @@ class ComposerStaticInit1125da0eb34c7e3373bd2e1456ea40a9
             'Smalot\\PdfParser\\' => 
             array (
                 0 => __DIR__ . '/..' . '/smalot/pdfparser/src',
+            ),
+        ),
+        'N' => 
+        array (
+            'NlpTools\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/nlp-tools/nlp-tools/src',
             ),
         ),
     );
