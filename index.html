@@ -13,6 +13,7 @@
     <script src="./js/wordcloud2.js"></script>
     <script src="./js/wordcloudgenerator.js"></script>
     
+    
 
 </head>
 
@@ -30,6 +31,10 @@
 <form action="upload.php" class="dropzone">
     
 </form>
+<form action="upload.php">
+    <textarea id="freeText" rows="10" cols="30"></textarea>
+</form>
+
 <input id="clickMe" type="button" value="Generate WordCloud" src="./js/wordcloudgenerator" onclick="generate();" />
 <!-- can add generate button here, which would run a js file/function which formats, counts words and generates word cloud. -->
 </body>
