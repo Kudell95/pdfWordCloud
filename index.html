@@ -11,7 +11,9 @@
     <script src="./js/jquery-3.3.1.js"></script>
     <script src="./js/dropzone.js"></script>
     <script src="./js/wordcloud2.js"></script>
+    <script src="./js/options.js"></script>
     <script src="./js/wordcloudgenerator.js"></script>
+    
     
     
 
@@ -24,18 +26,53 @@
     
 <!-- would need to implement sessions to actually deploy this. -->
 
-<!-- possible TODO: no way to delete uploaded files -->
-<div id="wordcloud_container"></div>
-<canvas id="wordcloud_canvas" width="500" height="500"></canvas>
-<h3>Drop files to generate as word cloud</h3>
-<form action="upload.php" class="dropzone">
-    
-</form>
-<form action="upload.php">
-    <textarea id="freeText" rows="10" cols="30"></textarea>
-</form>
+<div id="container">
+    <div id="wordcloud_container"></div>
+    <canvas id="wordcloud_canvas" width="800" height="600"></canvas>
 
-<input id="clickMe" type="button" value="Generate WordCloud" src="./js/wordcloudgenerator" onclick="generate();" />
-<!-- can add generate button here, which would run a js file/function which formats, counts words and generates word cloud. -->
+
+    <br/> <br/>
+
+    <label class="radio-inline"><input id="defaultRadio" type="radio" name="optradio" checked value="Files">Files</label>
+    <label class="radio-inline"><input type="radio" name="optradio" value="Text">Text</label>
+    <label class="radio-inline"><input type="radio" name="optradio" value="Options">Options</label>
+
+    <div id="panel">
+        <div id="showFiles" class="content">
+            <h3>Drop files to be generated as a word cloud</h3>
+            <form action="upload.php" class="dropzone">
+            </form>
+        </div>
+
+
+        <div id="showText" class="content">   
+            <h3>Enter Text to be generated as a word cloud</h3>
+            <form action="upload.php">
+                <textarea id="freeText" rows="10" cols="50"></textarea>
+            </form>
+        </div>
+
+        <div id="showOptions" class="content"> 
+            <h3>Modify how the word cloud looks.</h3>
+            <p>Number of Words:</p>
+            <div class="slidecontainer">
+                <input type="range" min="1" max="100" value="50" class="slider" id="Range" onchange="updateTextInput(this.value);">
+                <input type="text" id="textInput" value="50">
+            </div>
+
+
+        </div>
+    </div>
+      
+
+
+    <input id="clickMe" type="button" value="Generate WordCloud" src="./js/wordcloudgenerator" onclick="generate();" />
+    <!-- can add generate button here, which would run a js file/function which formats, counts words and generates word cloud. -->
+
+
+    
+</div>
+
+
 </body>
 </html>
