@@ -1,0 +1,39 @@
+
+html    
+{
+    text-align: center; 
+    margin: 0 auto;
+}
+
+
+.content {
+    display: none;
+}
+
+#showFiles {
+    display: block;
+}
+
+.dropzone 
+{
+    width: 500px;
+    margin: 0 auto;
+}
+
+
+
+
+#container 
+{
+    margin: 0 auto;
+}
+
+#wordcloud_canvas,  #dropInput
+{
+    margin: 0 auto;
+}
+
+#wordcloud_container
+{
+    visibility: hidden;
+}
