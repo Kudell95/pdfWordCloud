@@ -28,7 +28,7 @@
 
 <div id="container">
     <div id="wordcloud_container"></div>
-    <canvas id="wordcloud_canvas" width="800" height="600"></canvas>
+    <canvas id="wordcloud_canvas" width="500" height="300"></canvas>
 
 
     <br/> <br/>
@@ -56,8 +56,8 @@
             <h3>Modify how the word cloud looks.</h3>
             <p>Number of Words:</p>
             <div class="slidecontainer">
-                <input type="range" min="1" max="100" value="50" class="slider" id="Range" onchange="updateTextInput(this.value);">
-                <input type="text" id="textInput" value="50">
+                <input type="range" min="1" max="100" value="50" class="slider" id="Range" onchange="updateTextInput(this.value)" oninput="rangeOutputId.value = this.value"">
+                <output name="rangeOutput" id="rangeOutputId">50</output>
             </div>
 
 

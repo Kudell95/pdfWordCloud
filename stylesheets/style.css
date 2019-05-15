@@ -20,7 +20,19 @@ html
     margin: 0 auto;
 }
 
+#valuetext, #valuetext:focus{
+    border: none;
+    width: 50px;
+    text-align: center;
+    
+    
+}
 
+/* 
+.slidecontainer
+{
+    padding-left: 50px;
+} */
 
 
 #container 

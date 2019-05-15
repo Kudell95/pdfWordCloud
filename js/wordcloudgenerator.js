@@ -1,6 +1,17 @@
 
 var count = 0;
 
+var amountOfWords = 200;
+
+
+
+
+
+function updateTextInput(val) {
+  amountOfWords = val; 
+  console.log(amountOfWords);
+
+}
 
 // var stopword = new Array;
 // $.get("js/stopword.txt", function( words ) {

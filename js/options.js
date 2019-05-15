@@ -1,7 +1,6 @@
 var FileDrop = true;
 var TextInput = false;
 
-var amountOfWords = 200;
 
 
 //set the variables as bools and initialise for flip-flop
@@ -15,9 +14,6 @@ window.onload = function(){
 }
 
 
-function updateTextInput(val) {
-    document.getElementById('textInput').value=val; 
-}
 
 $(document).ready(function(){
     $('input[type="radio"]').click(function(){
