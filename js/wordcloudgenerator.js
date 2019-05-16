@@ -1,7 +1,7 @@
 
 var count = 0;
 
-var amountOfWords = 200;
+var amountOfWords = 100;
 
 
 
@@ -55,13 +55,24 @@ function processText(text){
 function generate(){
 var occurencesArr = new Array();
 var checkedwords = new Array();
-var wc_gridsize = Math.round(16 * $('#wordcloud_canvas').width() / 1024);
-var wc_weightFactor = 10;
+var wc_gridsize = 5;
+var wc_weightFactor = 3;
+// var FontSize = 2;
+
 
 var freetext = document.getElementById("freeText").value;
 
 if(freetext != null){
   processText(freetext);
+}
+
+function compareSecondColumn(a, b) {
+  if (a[1] === b[1]) {
+      return 0;
+  }
+  else {
+      return (a[1] < b[1]) ? -1 : 1;
+  }
 }
  
 
@@ -85,16 +96,20 @@ if(freetext != null){
 
         checkedwords.push(currentword); //to stop words getting counted more than once
         occurencesArr.push([currentword,occurences]);
-      }
+        }
       }
 
-      occurencesArr = occurencesArr.sort();
+      occurencesArr = occurencesArr.sort(compareSecondColumn);
       
       occurencesArr = occurencesArr.slice(occurencesArr.length - amountOfWords, occurencesArr.length); //this is just for testing the size of the array.
       // console.log(occurencesArr);
 
+      console.table(occurencesArr);
+
       WordCloud([document.getElementById('wordcloud_canvas'), document.getElementById('wordcloud_container'),], {list: occurencesArr, gridSize: wc_gridsize,
-      weightFactor: wc_weightFactor});
+        weightFactor: function (size) {
+          return Math.pow(size, 2.3) * $('#wordcloud_canvas').width() / 2000;
+      }, drawOutOfBound: false, shape: "circle"});
 });
 
 

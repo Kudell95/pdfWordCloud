@@ -13,6 +13,7 @@
     <script src="./js/wordcloud2.js"></script>
     <script src="./js/options.js"></script>
     <script src="./js/wordcloudgenerator.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     
     
     
@@ -27,17 +28,18 @@
 <!-- would need to implement sessions to actually deploy this. -->
 
 <div id="container">
-    <div id="wordcloud_container"></div>
-    <canvas id="wordcloud_canvas" width="500" height="300"></canvas>
+    
 
 
-    <br/> <br/>
-
+    
+    
+    <div id="panel">
+    <div id="Title"><div><h3>WordCloud</h3></div></div>
     <label class="radio-inline"><input id="defaultRadio" type="radio" name="optradio" checked value="Files">Files</label>
     <label class="radio-inline"><input type="radio" name="optradio" value="Text">Text</label>
     <label class="radio-inline"><input type="radio" name="optradio" value="Options">Options</label>
 
-    <div id="panel">
+   
         <div id="showFiles" class="content">
             <h3>Drop files to be generated as a word cloud</h3>
             <form action="upload.php" class="dropzone">
@@ -56,20 +58,26 @@
             <h3>Modify how the word cloud looks.</h3>
             <p>Number of Words:</p>
             <div class="slidecontainer">
-                <input type="range" min="1" max="100" value="50" class="slider" id="Range" onchange="updateTextInput(this.value)" oninput="rangeOutputId.value = this.value"">
-                <output name="rangeOutput" id="rangeOutputId">50</output>
+                <input type="range" min="1" max="120" value="100" class="slider" id="Range" onchange="updateTextInput(this.value)" oninput="rangeOutputId.value = this.value"">
+                <output name="rangeOutput" id="rangeOutputId">100</output>
             </div>
 
 
         </div>
+        <br><br>
+        <input id="clickMe" type="button" value="Generate WordCloud" src="./js/wordcloudgenerator" onclick="generate();" />
     </div>
+
+    
       
 
 
-    <input id="clickMe" type="button" value="Generate WordCloud" src="./js/wordcloudgenerator" onclick="generate();" />
+    
     <!-- can add generate button here, which would run a js file/function which formats, counts words and generates word cloud. -->
 
-
+    <br>
+    <div id="wordcloud_container"></div>
+    <canvas id="wordcloud_canvas" width="800" height="800"></canvas>
     
 </div>
 

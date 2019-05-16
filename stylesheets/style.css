@@ -3,6 +3,7 @@ html
 {
     text-align: center; 
     margin: 0 auto;
+    font-family: 'Roboto', sans-serif;
 }
 
 
@@ -16,7 +17,7 @@ html
 
 .dropzone 
 {
-    width: 500px;
+    width: 50%;
     margin: 0 auto;
 }
 
@@ -40,9 +41,49 @@ html
     margin: 0 auto;
 }
 
+#wordcloud_canvas 
+{
+    margin: 0;
+    padding: 35px;
+    border: 2px solid #008cff;
+    border-radius: 8px;
+}
+
+#panel{
+    margin: 0 auto;
+    padding-bottom: 50px;
+    border: 2px solid #008cff;
+    /* border-radius: 8px; */
+    width: 50%;
+}
+
+#Title  h3
+{
+    text-align: left;
+    color: whitesmoke;
+    top: 0;
+    margin: 0px;
+    padding-left: 5px;
+    display: block;
+    background: #008cff;
+}
+
+#Title div
+{
+        padding-top: 5px;
+        padding-bottom: 5px;
+        background: #008cff;
+
+}
+
+#Title {
+    padding-bottom: 15px;
+}
+
 #wordcloud_canvas,  #dropInput
 {
     margin: 0 auto;
+
 }
 
 #wordcloud_container
