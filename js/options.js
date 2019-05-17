@@ -1,5 +1,5 @@
 var FileDrop = true;
-var TextInput = false;
+var TextInput = true;
 
 var amountOfWords = 200;
 
