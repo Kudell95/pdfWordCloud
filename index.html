@@ -9,16 +9,14 @@
     <!-- this uses dropzone.js - https://www.dropzonejs.com/ -->
     <link href="./stylesheets/dropzone.css" rel="stylesheet">
     <link href="./stylesheets/style.css" rel="stylesheet">
+		<link href="./stylesheets/bootstrap.min.css" rel="stylesheet">
     <script src="./js/jquery-3.3.1.js"></script>
     <script src="./js/dropzone.js"></script>
     <script src="./js/wordcloud2.js"></script>
     <script src="./js/options.js"></script>
     <script src="./js/wordcloudgenerator.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
-    
-    
-    
-
+    <script src="./js/bootstrap.min.js"></script>
 </head>
 
 
@@ -28,60 +26,51 @@
     
 <!-- would need to implement sessions to actually deploy this. -->
 
-<div id="container">
-    
+<div id="topbar">
+	<h1>Word Cloud Generator</h1>
+</div>
 
-
-    
-    
+<div class="container">
+    <label class="radio-inline" for="defaultRadio"><input id="defaultRadio" type="radio" name="optradio" checked value="Files">Upload Files</label>
+    <label class="radio-inline" for="textRadio"><input id="textRadio" type="radio" name="optradio" value="Text">Type or Paste Text</label>
+    <label class="radio-inline" for="optionsRadio"><input id="optionsRadio" type="radio" name="optradio" value="Options">Options</label>
+		
     <div id="panel">
-    <div id="Title"><div><h3>WordCloud</h3></div></div>
-    <label class="radio-inline"><input id="defaultRadio" type="radio" name="optradio" checked value="Files">Files</label>
-    <label class="radio-inline"><input type="radio" name="optradio" value="Text">Text</label>
-    <label class="radio-inline"><input type="radio" name="optradio" value="Options">Options</label>
+      <div id="showFiles" class="content">
+        <p class="alert alert-info">Drag and drop files (PDF, DOCX or TXT) from your device to the area below to have their contents appear in the word cloud.</p>
+        <form action="upload.php" class="dropzone">
+        </form>
+      </div>
 
-   
-        <div id="showFiles" class="content">
-            <h3>Drop files to be generated as a word cloud</h3>
-            <form action="upload.php" class="dropzone">
-            </form>
+      <div id="showText" class="content">   
+        <p class="alert alert-info">Type or paste text into the area below to have the contents appear in the word cloud.</p>
+        <form action="upload.php">
+          <textarea id="freeText" rows="10" cols="50"></textarea>
+        </form>
+      </div>
+
+      <div id="showOptions" class="content"> 
+        <p class="alert alert-info">Change the appearance of the word cloud.</p>
+				<div class="form-group">
+					<label>Number of Words:<label>
+				</div>
+        <div class="slidecontainer form-group row">
+					<div class="col-1"></div>
+          <input type="range" min="1" max="100" value="50" class="col-9 form-control-range slider" id="Range" onchange="updateTextInput(this.value);">
+          <input type="text" readonly class="col-2 form-control-plaintext" id="textInput" value="50">
         </div>
-
-
-        <div id="showText" class="content">   
-            <h3>Enter Text to be generated as a word cloud</h3>
-            <form action="upload.php">
-                <textarea id="freeText" rows="10" cols="50"></textarea>
-            </form>
-        </div>
-
-        <div id="showOptions" class="content"> 
-            <h3>Modify how the word cloud looks.</h3>
-            <p>Number of Words:</p>
-            <div class="slidecontainer">
-                <input type="range" min="1" max="120" value="100" class="slider" id="Range" onchange="updateTextInput(this.value)" oninput="rangeOutputId.value = this.value"">
-                <output name="rangeOutput" id="rangeOutputId">100</output>
-            </div>
-
-
-        </div>
-        <br><br>
-        <input id="clickMe" type="button" value="Generate WordCloud" src="./js/wordcloudgenerator" onclick="generate();" />
+      </div>
+				
     </div>
 
     
       
-
-
-    
+    <input id="clickMe" class="btn btn-primary" type="button" value="Generate Word Cloud" src="./js/wordcloudgenerator" onclick="generate();" />
+		
+		<div id="wordcloud_container"></div>
+		<canvas id="wordcloud_canvas" width="600" height="400"></canvas>
     <!-- can add generate button here, which would run a js file/function which formats, counts words and generates word cloud. -->
-
-    <br>
-    <div id="wordcloud_container"></div>
-    <canvas id="wordcloud_canvas" width="800" height="800"></canvas>
-    
 </div>
-
 
 </body>
 </html>
