@@ -4,20 +4,12 @@ var count = 0;
 var amountOfWords = 100;
 
 
-
-
-
 function updateTextInput(val) {
   amountOfWords = val; 
   console.log(amountOfWords);
 
 }
 
-// var stopword = new Array;
-// $.get("js/stopword.txt", function( words ) {
-//   words = words.replace(/\r/g,"");
-//   stopword = words.split("\n");
-// }, 'text');
 
 
 //create a cookie which is used by the php script to pass the text variable
