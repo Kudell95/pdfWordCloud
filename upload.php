@@ -39,7 +39,7 @@ foreach ($dir as $fileinfo) {
   $tmp = explode(".", $fileinfo->getFilename());
 
   //assign the extension and convert to lowercase	
-  $extension = strtolower(end($tmp)); 
+  $extension = strtolower(end($tmp));
   
   
 

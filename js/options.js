@@ -9,8 +9,15 @@ window.onload = function(){
     $("#defaultRadio").attr('checked', true);
     $("#dropInput").toggle(FileDrop);
     $("#textInput").toggle(TextInput);
-
+    $.ajax({ url: 'clearFiles.php' });
     
+}
+
+
+function clearFiles(){
+    var fileDropZone = Dropzone.forElement("#mydropzone");
+    $.ajax({ url: 'clearFiles.php' });
+    fileDropZone.removeAllFiles();  
 }
 
 
@@ -36,3 +43,5 @@ function SwapInput()
 
     
 }
+
+
