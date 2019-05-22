@@ -1,7 +1,6 @@
 var FileDrop = true;
 var TextInput = true;
 
-var amountOfWords = 200;
 
 
 //set the variables as bools and initialise for flip-flop
@@ -10,14 +9,18 @@ window.onload = function(){
     $("#defaultRadio").attr('checked', true);
     $("#dropInput").toggle(FileDrop);
     $("#textInput").toggle(TextInput);
-
+    $.ajax({ url: 'clearFiles.php' });
     
 }
 
 
-function updateTextInput(val) {
-    document.getElementById('textInput').value=val; 
+function clearFiles(){
+    var fileDropZone = Dropzone.forElement("#mydropzone");
+    $.ajax({ url: 'clearFiles.php' });
+    fileDropZone.removeAllFiles();  
 }
+
+
 
 $(document).ready(function(){
     $('input[type="radio"]').click(function(){
@@ -40,3 +43,5 @@ function SwapInput()
 
     
 }
+
+

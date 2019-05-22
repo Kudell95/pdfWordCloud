@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,7 +15,8 @@
     <script src="./js/wordcloud2.js"></script>
     <script src="./js/options.js"></script>
     <script src="./js/wordcloudgenerator.js"></script>
-		<script src="./js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <script src="./js/bootstrap.min.js"></script>
 </head>
 
 
@@ -36,7 +38,7 @@
     <div id="panel">
       <div id="showFiles" class="content">
         <p class="alert alert-info">Drag and drop files (PDF, DOCX or TXT) from your device to the area below to have their contents appear in the word cloud.</p>
-        <form action="upload.php" class="dropzone">
+        <form action="upload.php" class="dropzone" id="mydropzone">
         </form>
       </div>
 
@@ -59,8 +61,12 @@
       </div>
 				
     </div>
+
+    
       
     <input id="clickMe" class="btn btn-primary" type="button" value="Generate Word Cloud" src="./js/wordcloudgenerator" onclick="generate();" />
+
+    <input id="clickMe" class="btn btn-primary" type="button" style="display: inline;" value="Clear Files" src="./js/options" onclick="clearFiles();" />
 		
 		<div id="wordcloud_container"></div>
 		<canvas id="wordcloud_canvas" width="600" height="400"></canvas>
