@@ -116,7 +116,7 @@ if (!window.clearImmediate) {
     return true;
   }());
 
-  // Find out if the browser impose minium font size by
+  // Find out if the browser imposes minimum font size by
   // drawing small texts on a canvas and measure it's width.
   var minFontSize = (function getMinFontSize() {
     if (!isSupported) {
@@ -205,7 +205,7 @@ if (!window.clearImmediate) {
       rotationSteps: 0,
 
       shuffle: true,
-      rotateRatio: 0.1,
+      rotateRatio: 0,
 
       shape: 'circle',
       ellipticity: 0.65,
