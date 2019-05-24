@@ -35,7 +35,8 @@ function processText(text){
     }
   createCookie("freetext", JSON.stringify(text), "10"); //convert the array to a string using stringify and use it to create a cookie
 
-  $.ajax({ url: 'upload.php', 
+  $.ajax({ url: 'upload.php',
+  async: false, 
   success: function(data) {
    console.log('freeText Processed!');
   }
