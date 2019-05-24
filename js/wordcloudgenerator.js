@@ -35,7 +35,13 @@ function processText(text){
     }
   createCookie("freetext", JSON.stringify(text), "10"); //convert the array to a string using stringify and use it to create a cookie
 
-  $.ajax({ url: 'upload.php' });  //run the upload.php script to process the newly sent text
+  $.ajax({ url: 'upload.php', 
+  success: function(data) {
+   console.log('freeText Processed!');
+  }
+ });  //run the upload.php script to process the newly sent text
+
+  
 
   //not the most elegant solution, but it saves me having to POST the data or redo all of the text processing in javascript.
 
@@ -45,29 +51,29 @@ function processText(text){
 
 //generate the word cloud
 function generate(){
-var occurencesArr = new Array();
-var checkedwords = new Array();
-var wc_gridsize = 5;
-var wc_weightFactor = 3;
-// var FontSize = 2;
 
 
-var freetext = document.getElementById("freeText").value;
+  var occurencesArr = new Array();
+  var checkedwords = new Array();
+  var wc_gridsize = 5;
+  var wc_weightFactor = 3;
+  // var FontSize = 2;
 
-if(freetext != null){
-  processText(freetext);
-}
 
-function compareSecondColumn(a, b) {
-  if (a[1] === b[1]) {
-      return 0;
-  }
-  else {
-      return (a[1] < b[1]) ? -1 : 1;
-  }
-}
- 
+    var freetext = document.getElementById("freeText").value;
 
+    if(freetext != null){
+      processText(freetext);
+    }
+
+    function compareSecondColumn(a, b) {
+      if (a[1] === b[1]) {
+          return 0;
+      }
+      else {
+          return (a[1] < b[1]) ? -1 : 1;
+      }
+    }
 
 //found problem where the json file would get cached with some browsers, causing the file to not be updated when the script is run. new Date().getTime() fixes this problem
   $.getJSON("uploads/pdftext.json?_=" + new Date().getTime(), function( words ) {
@@ -105,7 +111,5 @@ function compareSecondColumn(a, b) {
 });
 
 
-
-//TODO: once this is done call the delete script/implement sessions
 
 }
