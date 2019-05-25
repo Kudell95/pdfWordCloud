@@ -57,7 +57,7 @@ function generate(){
   var occurencesArr = new Array();
   var checkedwords = new Array();
   var wc_gridsize = 5;
-  var wc_weightFactor = 3;
+  // var wc_weightFactor = 3;
   // var FontSize = 2;
 
 
@@ -97,19 +97,20 @@ function generate(){
         occurencesArr.push([currentword,occurences]);
         }
       }
+     
+      console.log("loops Complete");
 
       occurencesArr = occurencesArr.sort(compareSecondColumn);
+
+      //Might be worth normalising the values here, so it produces are more readable output.
       
       occurencesArr = occurencesArr.slice(occurencesArr.length - amountOfWords, occurencesArr.length); //this is just for testing the size of the array.
-      // console.log(occurencesArr);
-
-      console.table(occurencesArr);
-      // console.log(Math.pow(size, 2.3) * $('#wordcloud_canvas').width() / 2000);
-      WordCloud([document.getElementById('wordcloud_canvas'), document.getElementById('wordcloud_container'),], {list: occurencesArr, gridSize: wc_gridsize,
+    
+      WordCloud([document.getElementById('wordcloud_canvas'), document.getElementById('wordcloud_container')], {list: occurencesArr, gridSize: wc_gridsize,
         weightFactor: function (size) {
           // console.log(Math.pow(size, 2.3) * $('#wordcloud_canvas').width() / 2000)
           return Math.pow(size, 2.3) * $('#wordcloud_canvas').width() / 2000;
-      }, drawOutOfBound: false, shape: "circle"});
+      }, drawOutOfBound: true, shape: "circle"});
 });
 
 

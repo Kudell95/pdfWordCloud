@@ -23,9 +23,6 @@
 
 <body>
 
-    
-<!-- would need to implement sessions to actually deploy this. -->
-
 <div id="topbar">
 	<h1>Word Cloud Generator</h1>
 </div>
@@ -67,11 +64,14 @@
     <input id="clickMe" class="btn btn-primary" type="button" value="Generate Word Cloud" src="./js/wordcloudgenerator" onclick="generate();" />
 
     <input id="clickMe" class="btn btn-primary" type="button" style="display: inline;" value="Clear Files" src="./js/options" onclick="clearFiles();" />
+    
 		
-		<div id="wordcloud_container" ></div>
-		<canvas id="wordcloud_canvas" width="800" height="600"></canvas>
     
 </div>
+
+<div id="wordcloud_container"></div>
+<canvas id="wordcloud_canvas" width="800" height="800"></canvas>
+		
 
 </body>
 </html>
