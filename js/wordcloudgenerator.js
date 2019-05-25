@@ -104,9 +104,10 @@ function generate(){
       // console.log(occurencesArr);
 
       console.table(occurencesArr);
-
+      // console.log(Math.pow(size, 2.3) * $('#wordcloud_canvas').width() / 2000);
       WordCloud([document.getElementById('wordcloud_canvas'), document.getElementById('wordcloud_container'),], {list: occurencesArr, gridSize: wc_gridsize,
         weightFactor: function (size) {
+          // console.log(Math.pow(size, 2.3) * $('#wordcloud_canvas').width() / 2000)
           return Math.pow(size, 2.3) * $('#wordcloud_canvas').width() / 2000;
       }, drawOutOfBound: false, shape: "circle"});
 });
