@@ -54,7 +54,7 @@
 					<label>Number of Words:<label>
 				</div>
         <div class="slidecontainer form-group row">
-          <input type="range" min="1" max="100" value="50" class="form-control-range slider" id="Range" onchange="updateTextInput(this.value);">
+          <input type="range" min="1" max="100" value="50" class="form-control-range slider" id="Range" oninput="updateTextInput(this.value);" on>
           <input type="text" readonly class="form-control-plaintext" id="textInput" value="50">
         </div>
       </div>

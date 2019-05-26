@@ -8,7 +8,7 @@ function updateTextInput(val)
 {
   amountOfWords = val; 
   console.log(amountOfWords);
-
+  document.getElementById("textInput").value = amountOfWords;
 }
 
 
@@ -131,7 +131,7 @@ function generate(){
       WordCloud([document.getElementById('wordcloud_canvas'), document.getElementById('wordcloud_container')], {list: occurencesArr, gridSize: wc_gridsize,
         weightFactor: function (size) {
           return Math.pow(size, 2.3) * $('#wordcloud_canvas').width() / 2000;
-      }, drawOutOfBound: true, shape: "circle"});
+      }, drawOutOfBound: false, shape: "circle"});
       // ----------------------------
 });
     
