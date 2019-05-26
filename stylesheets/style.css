@@ -4,7 +4,8 @@ html
     margin: 0 auto;
 }
 
-body {
+body
+{
 	background-color: #F0F0F0 !important;
 }
 
@@ -55,7 +56,7 @@ body {
 {
     width: 100%;
     margin: 0 auto;
-		border: 1px solid #ccc;
+	border: 1px solid #ccc;
 }
 
 .content {
@@ -81,19 +82,23 @@ textarea {
 /*Word cloud canvas*/
 #wordcloud_canvas,  #dropInput
 {
+	  /* visibility: visible; */
     margin: 0 auto;
 }
 
+
 canvas {
 	width: 100%;
-  height: 0;
+	/* height: 0; */
+	visibility: hidden;
 }
 
 #wordcloud_container
-{
-	width: 100%;
-	margin-top: 20px;
+{		
+	margin: 0 auto;	
+	/* overflow: auto; */
 }
+
 
 #textInput {
 	margin-left: 1em;

@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+     <!-- can be found at http://chittagongit.com/icon/word-cloud-icon-25.html - creative commons -->
+    <link rel="icon" href="favicon-32x32.png" type="image/png" sizes="32x32">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,7 +15,7 @@
     <script src="./js/jquery-3.3.1.js"></script>
     <script src="./js/dropzone.js"></script>
     <script src="./js/wordcloud2.js"></script>
-    <script src="./js/options.js"></script>
+    <script src="./js/config.js"></script>
     <script src="./js/wordcloudgenerator.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <script src="./js/bootstrap.min.js"></script>
@@ -22,9 +24,6 @@
 
 
 <body>
-
-    
-<!-- would need to implement sessions to actually deploy this. -->
 
 <div id="topbar">
 	<h1>Word Cloud Generator</h1>
@@ -67,11 +66,14 @@
     <input id="clickMe" class="btn btn-primary" type="button" value="Generate Word Cloud" src="./js/wordcloudgenerator" onclick="generate();" />
 
     <input id="clickMe" class="btn btn-primary" type="button" style="display: inline;" value="Clear Files" src="./js/options" onclick="clearFiles();" />
+    
 		
-		<div id="wordcloud_container"></div>
-		<canvas id="wordcloud_canvas" width="600" height="400"></canvas>
-    <!-- can add generate button here, which would run a js file/function which formats, counts words and generates word cloud. -->
+    <div id="wordcloud_container"></div>
+    
 </div>
+
+<canvas id="wordcloud_canvas" width="800" height="800"></canvas>
+
 
 </body>
 </html>

@@ -1,0 +1,11 @@
+Known Issues:
+
+- No multiple user support.
+- wordcloud list needs to be normalized to prevent issues with greatly weighted words
+
+
+
+ToDo:
+
+- add image download button
+- add more options
