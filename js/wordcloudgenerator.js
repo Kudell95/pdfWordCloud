@@ -5,7 +5,8 @@ var amountOfWords = 100;
 
 
 function updateTextInput(val) {
-  amountOfWords = val; 
+  amountOfWords = val;
+	document.getElementById("textInput").value = val;
   console.log(amountOfWords);
 
 }
