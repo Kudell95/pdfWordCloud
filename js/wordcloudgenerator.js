@@ -118,7 +118,7 @@ function generate(){
         var newValue = (oldValue - min) / (max - min) * (maxFontSize - minFontSize) + minFontSize;
         occurencesArr[k][1] = newValue;
 
-        // console.log(oldValue + " vs " + newValue);
+        console.log(oldValue + " vs " + newValue);
       }
       // ----------------------------
 

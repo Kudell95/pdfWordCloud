@@ -96,7 +96,7 @@ canvas {
 #wordcloud_container
 {		
 	margin: 0 auto;	
-	overflow: auto;
+	/* overflow: auto; */
 }
 
 
