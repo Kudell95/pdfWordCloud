@@ -4,7 +4,8 @@ html
     margin: 0 auto;
 }
 
-body {
+body
+{
 	background-color: #F0F0F0 !important;
 }
 
@@ -55,7 +56,7 @@ body {
 {
     width: 100%;
     margin: 0 auto;
-		border: 1px solid #ccc;
+	border: 1px solid #ccc;
 }
 
 .content {
@@ -93,14 +94,9 @@ canvas {
 }
 
 #wordcloud_container
-{
-	width: 100%;
-	display: block;
-	margin: auto;
-	width: 100%;
-	margin-top: 20px;
-	
-	
+{		
+	margin: 0 auto;	
+	overflow: auto;
 }
 
 

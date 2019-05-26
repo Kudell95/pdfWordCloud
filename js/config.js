@@ -35,11 +35,13 @@ window.onload = function(){
 function clearFiles(){
     var fileDropZone = Dropzone.forElement("#mydropzone");
     $.ajax({ url: 'clearFiles.php' });
-    fileDropZone.removeAllFiles();  
+    fileDropZone.removeAllFiles(); 
+    document.getElementById("freeText").value = ""; //clears the freetext
+    WordCloud([document.getElementById('wordcloud_canvas'), document.getElementById('wordcloud_container')], {}); //clears the wordcloud.
 }
 
 
-
+//the radiobutton div switch
 $(document).ready(function(){
     $('input[type="radio"]').click(function(){
     	var demovalue = $(this).val(); 
@@ -49,6 +51,10 @@ $(document).ready(function(){
 });
 
 
+
+
+
+//may be redundant - will probably delete later.
 function SwapInput()
 {
     FileDrop = !FileDrop;
@@ -58,7 +64,6 @@ function SwapInput()
 
     $("#dropInput").toggle(FileDrop);
     $("#textInput").toggle(TextInput);
-
     
 }
 

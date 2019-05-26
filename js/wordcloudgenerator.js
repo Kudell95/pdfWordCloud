@@ -4,12 +4,12 @@ var count = 0;
 var amountOfWords = 100;
 
 
-function updateTextInput(val) {
+function updateTextInput(val) 
+{
   amountOfWords = val; 
   console.log(amountOfWords);
 
 }
-
 
 
 //create a cookie which is used by the php script to pass the text variable
@@ -42,11 +42,10 @@ function processText(text){
   }
  });  //run the upload.php script to process the newly sent text
 
-  
-
   //not the most elegant solution, but it saves me having to POST the data or redo all of the text processing in javascript.
 
 }
+
 
 
 
@@ -57,9 +56,8 @@ function generate(){
   var occurencesArr = new Array();
   var checkedwords = new Array();
   var wc_gridsize = 5;
-  // var wc_weightFactor = 3;
-  // var FontSize = 2;
-
+  var maxFontSize = 16; //these values can be added to the options panel 
+  var minFontSize = 4; 
 
     var freetext = document.getElementById("freeText").value;
 
@@ -81,6 +79,8 @@ function generate(){
       // console.log(words);
       var numberofwords = words.length;
       
+      // --- tallying occurences --------------------
+
 
       for(var i = 0; i < numberofwords; i++){ //loop through everyword
         var currentword = words[i];
@@ -97,22 +97,44 @@ function generate(){
         occurencesArr.push([currentword,occurences]);
         }
       }
+      // --------------------------------------------
+
+
      
-      console.log("loops Complete");
-
+      // --- sorting values ---
       occurencesArr = occurencesArr.sort(compareSecondColumn);
+      // ----------------------
 
-      //Might be worth normalising the values here, so it produces are more readable output.
-      
-      occurencesArr = occurencesArr.slice(occurencesArr.length - amountOfWords, occurencesArr.length); //this is just for testing the size of the array.
+
+
+      // --- normalising values ---
+      var arrlength = occurencesArr.length;
+      var min = occurencesArr[0][1];
+      var max = occurencesArr[arrlength-1][1];
+
+      for(var k = occurencesArr.length - 1; k > 0; k--)
+      {
+        var oldValue = occurencesArr[k][1];
+        var newValue = (oldValue - min) / (max - min) * (maxFontSize - minFontSize) + minFontSize;
+        occurencesArr[k][1] = newValue;
+
+        // console.log(oldValue + " vs " + newValue);
+      }
+      // ----------------------------
+
+
+
+
+      // --- wordcloud generation ---
+      occurencesArr = occurencesArr.slice(occurencesArr.length - amountOfWords, occurencesArr.length); 
     
       WordCloud([document.getElementById('wordcloud_canvas'), document.getElementById('wordcloud_container')], {list: occurencesArr, gridSize: wc_gridsize,
         weightFactor: function (size) {
-          // console.log(Math.pow(size, 2.3) * $('#wordcloud_canvas').width() / 2000)
           return Math.pow(size, 2.3) * $('#wordcloud_canvas').width() / 2000;
       }, drawOutOfBound: true, shape: "circle"});
+      // ----------------------------
 });
-
+    
 
 
 }
