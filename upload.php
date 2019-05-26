@@ -121,7 +121,7 @@ foreach ($dir as $fileinfo) {
       //Remove punctuation and whitespace and convert elements to lowercase
       for ($i = 0; $i < count($words); $i++) {
         $words[$i] = strtolower($words[$i]);
-        $words[$i] = preg_replace("/(\s|\.)/", "", $words[$i]);
+        $words[$i] = preg_replace("/(\s|\.|,|;|:|'|\")/", "", $words[$i]);
       }
 
 
