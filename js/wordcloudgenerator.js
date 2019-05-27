@@ -1,7 +1,7 @@
 
 var count = 0;
 
-var amountOfWords = 100;
+var amountOfWords = 50;
 
 
 function updateTextInput(val) 
