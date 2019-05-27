@@ -28,7 +28,14 @@ window.onload = function(){
     
 }
 
-
+function downloadCanvas()
+{
+    var canvas = document.getElementById("wordcloud_canvas");
+    var image = canvas.toDataURL("image/jpg");
+    window.location.href = image;
+    // download.setAttribute("href", image);
+    //download.setAttribute("download","archive.png");
+}
 
 
 
