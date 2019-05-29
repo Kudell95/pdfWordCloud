@@ -16,6 +16,7 @@ $freeText = json_decode($_COOKIE["freetext"]);
 
 //Regex pattern for linebreak removal
 $linebreak_pattern = "/(\r)?(\n)?/";
+$pattern = "/<(\/)?(\w)+(\s)*(\w+=\"\w+\"\s*)*>|\\n/";
 
 //Read in list of stopwords and remove linebreaks from output
 $stopwords = file("./stopword.txt");
@@ -59,8 +60,6 @@ foreach ($dir as $fileinfo) {
       $words = array_merge ($words, explode(" ", $text));
       
       
-
-
       break;
 
     //DOCX files
