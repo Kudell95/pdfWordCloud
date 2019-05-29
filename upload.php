@@ -7,8 +7,6 @@ use Skyeng\Lemmatizer;
 include 'vendor/autoload.php';
 $dir = new RecursiveDirectoryIterator("./uploads/");
 $parser = new \Smalot\PdfParser\Parser(); //PDF Parser
-$parser_docx = new LukeMadhanga\DocumentParser(); //DOCX Parser
-
 $parser_docx_txt = new LukeMadhanga\DocumentParser(); //DOCX and TXT Parser
 $lemma = new Lemmatizer();
 $words = array();
