@@ -64,7 +64,7 @@ foreach ($dir as $fileinfo) {
       $docx = $parser_docx_txt->parseFromFile($targetDir . $filename);
       
       //Remove all formatting tags and new line characters from input
-      $pattern = "/<(\/)?(\w)+(\s)*(\w+=\"\w+\"\s*)*>|\\n/";
+      $docx = preg_replace("/(<p\srsidR=\"\d+\"\srsidRDefault=\"\d+\"\srsidP=\"\d+\">|<\/p>|\\n)/", "", $docx);
       $docx = preg_replace($pattern, "", $docx);
 			
       //Break input into individual words
