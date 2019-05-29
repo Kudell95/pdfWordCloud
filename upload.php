@@ -69,6 +69,7 @@ foreach ($dir as $fileinfo) {
       $docx = $parser_docx_txt->parseFromFile($targetDir . $filename);
       
       //Remove all formatting tags and new line characters from input
+      $docx = preg_replace("/(<p\srsidR=\"\d+\"\srsidRDefault=\"\d+\"\srsidP=\"\d+\">|<\/p>|\\n)/", "", $docx); // this doesn't cover all cases, some word document's produce errors.
       $pattern = "/<(\/)?(\w)+(\s)*(\w+=\"\w+\"\s*)*>|\\n/";
       $docx = preg_replace($pattern, "", $docx);
 			
