@@ -18,6 +18,7 @@ $freeText = json_decode($_COOKIE["freetext"]);
 $linebreak_pattern = "/(\r)?(\n)?/";
 $pattern = "/<(\/)?(\w)+(\s)*(\w+=\"\w+\"\s*)*>|\\n/";
 
+
 //Read in list of stopwords and remove linebreaks from output
 $stopwords = file("./stopword.txt");
 $stopwords = preg_replace($linebreak_pattern, "", $stopwords);
@@ -68,7 +69,7 @@ foreach ($dir as $fileinfo) {
       $docx = $parser_docx_txt->parseFromFile($targetDir . $filename);
       
       //Remove all formatting tags and new line characters from input
-      $docx = preg_replace("/(<p\srsidR=\"\d+\"\srsidRDefault=\"\d+\"\srsidP=\"\d+\">|<\/p>|\\n)/", "", $docx);
+      $pattern = "/<(\/)?(\w)+(\s)*(\w+=\"\w+\"\s*)*>|\\n/";
       $docx = preg_replace($pattern, "", $docx);
 			
       //Break input into individual words
