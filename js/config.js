@@ -1,6 +1,15 @@
 var FileDrop = true;
 var TextInput = true;
 
+
+
+function uuidv4() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
+  }
+
 function createCookie(name, value, days) {
     var expires;
     if (days) {
@@ -23,8 +32,11 @@ window.onload = function(){
     $.ajax({ url: 'clearFiles.php' });
 
     // possible session method
-    // if(!document.cookie.split(';').filter((item) => item.trim().startsWith('SessionID=')).length) //check cookie existence on this pc
-    //     createCookie("SessionID", JSON.stringify(text), "10"); //create sessionId with random unique number, assigned to each user at window load 
+    if(!document.cookie.split(';').filter((item) => item.trim().startsWith('SessionID=')).length) //check cookie existence on this pc
+        createCookie("SessionID", uuidv4(), "10"); //create sessionId with random unique number, assigned to each user at window load 
+    
+
+    console.log(document.cookie.split(';').filter((item) => item.trim().startsWith('SessionID=')));
     
 }
 
