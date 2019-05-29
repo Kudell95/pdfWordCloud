@@ -7,8 +7,6 @@ use Skyeng\Lemmatizer;
 include 'vendor/autoload.php';
 $dir = new RecursiveDirectoryIterator("./uploads/");
 $parser = new \Smalot\PdfParser\Parser(); //PDF Parser
-$parser_docx = new LukeMadhanga\DocumentParser(); //DOCX Parser
-
 $parser_docx_txt = new LukeMadhanga\DocumentParser(); //DOCX and TXT Parser
 $lemma = new Lemmatizer();
 $words = array();
@@ -18,6 +16,8 @@ $freeText = json_decode($_COOKIE["freetext"]);
 
 //Regex pattern for linebreak removal
 $linebreak_pattern = "/(\r)?(\n)?/";
+$pattern = "/<(\/)?(\w)+(\s)*(\w+=\"\w+\"\s*)*>|\\n/";
+
 
 //Read in list of stopwords and remove linebreaks from output
 $stopwords = file("./stopword.txt");
@@ -25,6 +25,11 @@ $stopwords = preg_replace($linebreak_pattern, "", $stopwords);
 
 
 $targetDir = 'uploads/';
+
+if(!is_dir($targetDir))
+{
+  mkdir($targetDir);
+}
 
 if (!empty($_FILES)) {  //if there have been files uploaded
   $targetFile = $targetDir.time().'-'. $_FILES['file']['name'];
@@ -56,8 +61,6 @@ foreach ($dir as $fileinfo) {
       $words = array_merge ($words, explode(" ", $text));
       
       
-
-
       break;
 
     //DOCX files
