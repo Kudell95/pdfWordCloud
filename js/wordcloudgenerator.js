@@ -26,14 +26,24 @@ function createCookie(name, value, days) {
 }
 
 
+function escapeHTML(str)
+{ 
+  var div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+}
+
+
 
 //format the text for use in the php script
 function processText(text){
-    for (var i = 0; i < text.length; i++)
+    var escapedText = escapeHTML(text);
+
+    for (var i = 0; i <  escapedText.length; i++)
     {
-      text[i] = text[i].replace(/[^\w\s]/g, ""); //had some issues with passing the text to php, this fixes some of them.
+      escapedText[i] =  escapedText[i].replace(/[^\w\s]/g, ""); //had some issues with passing the text to php, this fixes some of them.
     }
-  createCookie("freetext", JSON.stringify(text), "10"); //convert the array to a string using stringify and use it to create a cookie
+  createCookie("freetext", JSON.stringify(escapedText), "10"); //convert the array to a string using stringify and use it to create a cookie
 
   $.ajax({ url: 'upload.php',
   async: false, 
